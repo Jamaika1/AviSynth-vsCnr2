@@ -58,7 +58,7 @@ void vsCnr2<T>::downSampleLuma(T* __restrict dstp_, PVideoFrame& src) noexcept
         const T* srcpn{ srcp + src_stride * subsh };
         T* __restrict dstp{ dstp_ + y * dst_width };
 
-        for (int x{ 0 }; x < static_cost<int>(dst_width); ++x)
+        for (int x{ 0 }; x < static_cast<int>(dst_width); ++x)
         {
             const int temp{ x << subsw };
             dstp[x] = (srcp[temp] + srcp[temp + 1] + srcpn[temp] + srcpn[temp + 1] + 2) >> 2;
@@ -93,7 +93,7 @@ int vsCnr2<T>::processChroma(PVideoFrame dst, PVideoFrame cur, PVideoFrame prev,
 
     for (int y{ 0 }; y < height_uv; ++y)
     {
-        for (int x{ 0 }; x < static_cost<int>(width_uv); ++x)
+        for (int x{ 0 }; x < static_cast<int>(width_uv); ++x)
         {
             const int diff_y{ _curp_y[x] - _prevp_y[x] };
             const int diff_u{ curp_u[x] - prevp_u[x] };
